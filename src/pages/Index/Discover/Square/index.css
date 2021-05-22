@@ -1,0 +1,39 @@
+li{float: left;}
+.box>a{
+	display: inline-block;
+}
+#max_box{width: 1120px;height: 100%;margin: auto;position: relative;overflow: hidden auto;}
+#top{width: 100%;height: 10%;position: relative;}
+#top>span{font-size: 25px;position: relative;top: 2px;}
+#top>button{height: 31px;width: 90px;position: relative;bottom: 0px;left: 20px;font-size: 15px;}
+#top>div{position: absolute;right: 0px;bottom: 15px;height: 31px;width: 45px;text-align: center;line-height: 31px;background-color: #C20C0C;font-size: 15px;}
+#top>hr{width: 100%;height: 3px;background-color: #C20C0C;position: absolute;bottom: 5px;margin: 0;}
+#center{margin: 0 -10x;padding-top: 20px;}
+.box{height: 245px;width: 200px;margin: 0 10px 10px 10px;position: relative;float: left;}
+.box>a>div{
+	width: 200px;height: 40px;z-index: -1;font-size: 15px;
+	display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;
+	}
+.box>a>img{height: 200px;width: 200px;top: 0;z-index: -1;border-radius: 8px;margin-bottom: 5px;}
+#foot>ul>li{height: 27px;width: 27px;background-color: #CCCCCC;font-size: 10px;position: relative;margin:0 3px;left: 270px;}
+#foot>ul{position: relative;line-height: 27px;}
+#foot>ul>li i{
+	position: relative;top: 2px;
+}
+#catlist_box{
+    position: fixed;width: 640px;height: 420px;z-index: 0;background-color: white;border: 1px solid #CCCCCC;
+font-size: 12px;z-index: 999;
+}
+#top_cat{float: left;height: 60px;width: 600px;border-bottom: 0.1px solid #CCCCCC;}
+#lf_cat{
+    float: left;width: 100px;height: 360px;
+}
+#rt_cat{
+    float: left;width: 500px;height: 360px;
+}
+#lf_cat div{height: 72px;line-height: 72px;width: 60px;float: right;text-align: center;border-right: 1px solid #CCCCCC;}
+#rt_cat div{height: 72px;width: 500px;}
+#rt_cat li{height: 20px;line-height: 20px;text-align: center;list-style: none;float: left;padding: 0 10px;position: relative;top: 26px;border-right: 1px solid #CCCCCC;line-height: 20px;}
+#foot>ul>li>span{
+	font-size: 12px;position: relative;top: 3px;
+}

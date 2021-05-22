@@ -1,0 +1,30 @@
+#body-box{
+    width: 100%;height: 81.8vh;position: relative;
+}
+#body-box>div{float: left;position: relative;}
+#center-l{
+	height: 100%;width: 200px;padding: 10px 0;overflow: auto;
+	box-sizing: border-box;border-right: 1px solid rgb(225, 225, 225);
+	overflow-x: hidden;
+}
+#left-tag>a>div{
+	font-size: 16px;margin: 3px 15px 3px 10px;height: 35px;line-height: 35px;padding-left: 8px;
+}
+#center-l>div>a>div:hover{
+	background-color: rgb(224, 220, 221)!important;
+}
+.myList{margin-top: 10px;}
+.myList>a>div{font-size: 16px;margin: 3px 15px 3px 10px;height: 35px;padding-left: 8px;line-height: 35px;width: 190px;
+}
+.myList>a>div>span{
+	width: 152px;display: inline-block;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;height: 35px;
+}
+.myList>a>div>i{
+	margin-right: 10px;position: relative;top: -13px;
+}
+.myList>a{
+	display: block;width: auto;height: auto;color: #313131;text-decoration: none;
+}
+#ml-creat{font-size:10px;color: rgb(166, 166, 166);position: relative;left: 75px;}
+#ml-get{font-size: 8px;color: rgb(166, 166, 166);position: relative;left: 5px;}
+#ml-get2{font-size: 8px;color: rgb(166, 166, 166);position: relative;left: 5px;}

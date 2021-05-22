@@ -1,0 +1,40 @@
+#search-top{height: 100px;width: 1336px;}
+#search-top>span{position: relative;top:50px;padding: 0 15px;font-size: 14px;}
+#search-count{
+	transform: translate(2vw,2vw);font-weight: bold;
+}
+#search-music-index{
+	height: 25px;margin-top: 15px;font-size: 13px;line-height: 25px;
+}
+#search-music-index>div{
+	float: left;height: 25px;padding-left: 5px;
+}
+
+#search-music-box{
+	overflow: auto;height: 29.5vw;
+}
+#search-music-box .fa-heart,.fa-heart-o{
+	position: relative;left: 25px;
+}
+#search-music-box .fa-heart{
+	color: rgb(253, 84, 78);
+}
+#search-music-box .fa-download{
+	position: relative;left: 40px;
+}
+#search-music-box>.music-row:hover{
+	background-color: #b0fffd!important;
+}
+#search-music-index>div:hover{
+	background-color: #b0fffd!important;
+}
+.search-type{
+    font-weight: bold;margin-left: 15px;
+}
+#offsetUl{
+	height: 20px;margin: 10px 0 0 0;padding: 0;
+}
+#offsetUl>li{
+	width: 20px;height: 20px;margin: 0 4px;border-radius: 5px;background-color: rgb(194, 213, 229);text-align: center;line-height: 20px;
+	transform: translate(30vw);cursor: pointer;
+}

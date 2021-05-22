@@ -1,0 +1,1 @@
+export const playerState = (type,data) => ({type,data})

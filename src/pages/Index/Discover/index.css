@@ -1,0 +1,21 @@
+.discover-active{
+    font-size: 21px !important;
+    font-weight: bold !important;
+}
+
+#discover-box{
+    height: 100%; width: 1336px;
+}
+#discover-top{
+    height: 60px;width: 100%;line-height: 60px;
+}
+#discover-top>a{
+    display: inline-block;
+    font-size: 16px;font-weight: 200;
+}
+#discover-top>a>li{
+    margin: 0 12px;float: left;
+}
+#discover-bottom{
+    height: 538px;width: 100%;box-sizing: border-box;
+}

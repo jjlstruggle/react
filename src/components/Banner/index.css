@@ -1,0 +1,79 @@
+#center-r-foot{
+	height: 538px;width: 1336px;
+	overflow-y: auto;overflow-x: hidden;
+}
+/* 轮播图 */
+#bannar{
+	width: 100%;height: 225px;
+	position: relative;
+}
+
+#bannar>img{
+	position: absolute;
+	width: 540px;
+	transition: all 0.5s;
+	left: 390px;
+	border-radius: 10px;
+	top: 25px;
+}
+
+.origin{
+	height: 160px;
+	display: none;
+	z-index: 0;
+	transform: translate(0);
+}
+
+.cImg{
+	height: 200px !important;
+	top: 5px !important;
+	z-index: 1 !important;
+	display: inline-block !important;
+}
+
+.lImg{
+	height: 160px;transform: translate(-270px) !important;
+	display: inline-block !important;
+}
+
+.rImg{
+	height: 160px;transform: translate(270px) !important;
+	display: inline-block !important;
+}
+
+.cLi{
+	background-color: rgb(253, 84, 78) !important;
+}
+
+.originLi{
+	background-color: rgb(230, 230, 230);
+}
+
+#bannar>ul{
+	margin:0 auto;
+	height: 10px;width: 220px;
+	position: relative;top: 150px;
+	padding: 0;
+}
+
+#bannar>ul>li{
+	width: 6px;height: 6px;
+	border-radius: 6px;
+	background-color: rgb(230, 230, 230);
+	margin:0 7px;
+}
+
+#bannar>div{
+	position: relative;
+	z-index: 1;
+	width: 35px;height: 35px;
+	border-radius: 32px;
+	background-color: rgba(212, 212, 212,0.4);
+	font-size: 24px;
+	line-height: 35px;
+	color: #e2e2e2;
+	text-align: center;
+}
+
+#last-img{left: 130px;top: 90px;}
+#next-img{left: 1155px;top: 56px;}

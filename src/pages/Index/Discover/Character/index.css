@@ -1,0 +1,129 @@
+
+#center-r-foot{
+	height: 538px;width: 1336px;
+	overflow-y: auto;overflow-x: hidden;
+}
+/* 轮播图 */
+#bannar{
+	width: 100%;height: 225px;
+	position: relative;
+}
+
+#bannar>img{
+	position: absolute;
+	width: 540px;
+	transition: all 0.5s;
+	left: 390px;
+	border-radius: 10px;
+	top: 25px;
+}
+
+.origin{
+	height: 160px;
+	display: none;
+	z-index: 0;
+	transform: translate(0);
+}
+
+.cImg{
+	height: 200px !important;
+	top: 5px !important;
+	z-index: 1 !important;
+	display: inline-block !important;
+}
+
+.lImg{
+	height: 160px;transform: translate(-270px) !important;
+	display: inline-block !important;
+}
+
+.rImg{
+	height: 160px;transform: translate(270px) !important;
+	display: inline-block !important;
+}
+
+#bannar>ul{
+	margin:0 auto;
+	height: 10px;width: 200px;
+	position: relative;top: 150px;
+	padding: 0;
+}
+
+#bannar>ul>li{
+	width: 6px;height: 6px;
+	border-radius: 6px;
+	background-color: rgb(230, 230, 230);
+	margin:0 7px;
+}
+
+#bannar>div{
+	position: relative;
+	z-index: 1;
+	width: 35px;height: 35px;
+	border-radius: 32px;
+	background-color: rgba(212, 212, 212,0.4);
+	font-size: 24px;
+	line-height: 35px;
+	color: #e2e2e2;
+	text-align: center;
+}
+
+#last-img{left: 130px;top: 90px;}
+#next-img{left: 1155px;top: 56px;}
+
+/* 推荐歌曲 */
+#recommend{
+	margin: -25px auto 0 auto;
+	width: 90%;
+}
+
+#recommend>h1{
+	font-size: 20px;font-weight: bold;position: relative;top: 10px;margin-left: 55px;margin-bottom: 25px;
+}
+
+#recommend>h1>a>span{
+	position: relative;top: 1px;font-size: 16px;
+}
+#divBox{
+	width: 100%;margin-top: -10px;
+}
+#divBox a{
+	display: inline-block;
+}
+
+#divBox>div:nth-child(1),#divBox>div:nth-child(6){
+	margin-left: 54px;
+}
+
+#divBox>div{
+	margin: 10px 8px;
+	width: 203px;height: 248px;
+	float: left;
+}
+
+#divBox>div>a>img{
+	width: 203px;height: 203px;
+	margin-bottom: 5px;border-radius: 8px;
+}
+
+#divBox>div>a>span{
+	width: 203px;height: 40px;
+	overflow: hidden;font-size: 15px;
+	display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;
+}
+
+#divBox2{
+	width: 100%;padding: 0 45px;
+}
+
+#divBox2>div{
+	float: left;width: 350px;margin: 0 7px;height: 245px;
+}
+
+#divBox2>div>img{
+	width: 350px;height: 200px;margin-bottom: 5px;border-radius: 8px;
+}
+
+#divBox2>div>span{
+	width: 350px;height: 45px;overflow: hidden;font-size: 15px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;
+}

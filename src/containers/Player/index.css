@@ -1,0 +1,190 @@
+#player-box{
+    position: relative;
+    width: 100%;height: 10vh;
+	border-top: 1px solid #dddada;
+	background-color: #ffffff;
+}
+
+#player-box>a{
+	width: 7.5vh;height: 7.5vh;
+	transform: translate(1.25vh,1.25vh);
+	display: inline-block;
+}
+
+#music-img{
+	width: 7.5vh;height: 7.5vh;
+	border-radius: 5px;
+	opacity: 1;
+}
+
+#player-box>div{
+	display: inline-block;
+}  
+
+#music-name{
+	overflow: hidden;white-space:nowrap;
+	padding: 0 10px;font-size: 15px;
+	transform: translate(1.3vh,-2.4vh);
+	width: 19vh;
+}
+
+#singer-name{
+	overflow: hidden;white-space:nowrap;
+	padding: 0 6px;font-size: 14px;
+	transform: translate(-20vh);
+	width: 24vh;
+}
+
+#play-style{
+	font-size: 14px;
+	transform: translate(16.8vw,-3vh);
+	/* 24.4 --> 16.8  7.6 */
+}
+
+#last-music{
+	font-size: 15px;
+	transform: translate(19.1vw,-3vh);
+}
+
+#on-off{
+	font-size: 16px;
+	transform: translate(21.4vw,-3vh);
+}
+
+#on-off>div{
+	width: 4.5vh;height: 4.5vh;
+	border-radius: 2.25vh;
+	background-color: rgb(232, 252, 237);
+	text-align: center;line-height: 4.5vh;
+}
+
+#next-music{
+	font-size: 16px;
+	transform: translate(23.7vw,-3vh);
+}
+
+#desklyrics{
+	font-size: 13px;font-weight: 800;
+	transform: translate(26vw,-3vh);
+}
+
+#process{
+	position: relative;
+	background-color: rgb(204, 204, 204);
+	transform: translate(4.4vw,0.8vh);
+	height: 0.45vh;width: 51.3vh;
+}
+
+#process:hover{
+	height: 0.9vh;border-radius: 0.45vh;
+}
+
+#process:hover #now-process>span{
+	display: block;
+}
+
+#now-process{
+	position: absolute;
+	display: inline-block;
+	background-color: rgb(255, 97, 91);
+	height: 100%;
+}
+
+#now-process>span{
+	position: absolute;
+	right: -0.5vh;top: -0.1vh;
+	display: none;
+	height: 1.2vh;width: 1.2vh;
+	border-radius: 0.6vh;
+	background-color: rgb(255,97,91);
+}
+
+#now-time{
+	font-size: 10px;color: rgb(188, 188, 188);
+	transform: translate(3.8vw,1vh);
+}
+
+#time{
+	font-size: 10px;color: rgb(188, 188, 188);
+	transform: translate(4.9vw,1vh);
+}
+
+#voice{
+	font-size: 28px;
+	transform: translate(30.5vw,-1vh);
+}
+
+#voice-process{
+	width: 7.6vh;height: 0.5vh;
+	transform: translate(31.1vw,-2.2vh);
+	background-color: rgb(188, 188, 188);
+}
+
+#now-voice-process{
+	position: absolute;
+	display: inline-block;
+	background-color: rgb(255,97,91);
+	height: 100%;
+	width: 100%;height: 100%;
+}
+
+#now-voice-process>span{
+	height: 8px;width: 8px;
+	border-radius: 8px;
+	background-color: rgb(255,97,91);
+	position: absolute;
+	right: -2px;bottom: -2px;
+	display: none;
+}
+
+#voice-process:hover #now-voice-process>span{
+	display: block;
+}
+
+#music-list{
+	font-size: 18px;
+	transform: translate(32.6vw,-1.3vh);
+}
+
+#on-off>div:hover{
+	background-color: #dddada;
+}
+
+#play-style:hover{
+	color: rgb(253, 84, 78);
+}
+#last-music:hover{
+	color: rgb(253, 84, 78);
+}
+#next-music:hover{
+	color: rgb(253, 84, 78);
+}
+#desklyrics:hover{
+	color: rgb(253, 84, 78);
+}
+
+#right-music-list{
+	position: absolute;right: 0;top: 0;width: 420px;height: 595px;background-color: #ffffff;
+z-index: 999;top: 60px;font-size: 12px;border: 0.1px solid #e6d9d9;display: none;
+}
+#list-change>div{
+	width: 210px;height: 30px;margin: 0 auto;
+}
+#list-change>div>button{
+	width: 103px;height: 30px;border: 0;border-radius: 15px;background-color: rgb(209, 207, 207);margin-top: 20px;color: white;margin-left: -3px;
+}
+#list-content{
+	padding-left: 10px;
+}
+#list-content>div>div{
+	float: left;
+}
+#list-top{
+	margin-top: 40px;height: 20px;line-height: 20px;margin-bottom: 15px;
+}
+#list-body{
+	overflow: auto;height: 492px;
+}
+#list-body>div>div{
+	float: left;
+}

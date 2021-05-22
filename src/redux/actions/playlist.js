@@ -1,0 +1,1 @@
+export const playlistImfor = (type,data) => ({type,data})

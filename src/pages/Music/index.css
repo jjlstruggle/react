@@ -1,0 +1,73 @@
+#music-box{
+    width: 100%;height:90vh;
+	background: -moz-linear-gradient(rgb(240, 238, 238), rgb(255, 255, 255));
+	background: linear-gradient(rgb(240, 238, 238), rgb(255, 255, 255));
+}
+#top>div{float: left;}
+#music-left{
+	width: 40%;position: relative;height: 100%;float: left;
+}
+#play-bar{
+	position: relative;left: 420px;top: 150px;z-index: 1;width: 180px;
+}
+#play-bar-img{
+	position: relative;width: 80px;height: 140px;
+	transform-origin: left top;
+	transition: transform 1s;
+}
+.rotate1{
+	transform: rotate(-50deg) !important;
+}
+.rotate2{
+	transform: rotate(50/3 deg) !important;
+}
+#disc>div{
+	position: relative;width: 276px;height: 276px;background-color: rgb(214, 214, 215);border-radius: 270px;
+left: 283px;top: 60px;
+}
+#disc>div>img{
+	position: relative;left: 11px;top: 11px;
+}
+@keyframes loop{
+	from{
+		transform: rotate(0);
+	}to{
+	transform: rotate(360deg);
+	}
+}
+#disc>img{
+	position: relative;width: 150px;height: 150px;left: 348px;top: -153px;border-radius: 150px;
+	animation: loop 12s linear infinite;
+}
+#music-center{
+	width: 30%;height: 100%;float: left;
+}
+#music-center>div{
+	text-align: center;position: relative;
+}
+#musicTitle{
+	font-size: 30px;margin-top: 60px;height: 50px;width: 100%;padding: 0;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+}
+#singer{
+	font-size: 15px;height: 22px;
+}
+#lyrics-box{
+	height: 345px;margin-top: 50px;
+}
+#lyrics-box>ul{
+	height: 345px;overflow:hidden auto;position: relative;padding: 0;
+}
+#lyrics-box>ul>li{
+	font-size: 15px;margin: 16px 0;height: 20px;overflow:hidden;float: none !important;
+}
+#lyrics-box>ul>div{
+	position: absolute;font-size: 15px;text-align: center;width: 100%;top: 100px;
+}
+.cLyric{
+	color : #FA4044;
+	font-weight: 800;
+}
+.originLyric{
+	color: #000;
+	font-weight: 400;
+}

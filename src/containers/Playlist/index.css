@@ -1,0 +1,86 @@
+#_head{
+	position: relative;width: 100%;margin-bottom: -20px;
+}
+#imfor{
+	position: relative;display: inline-block;
+}
+#playlist-img{
+	width: 185px;height: 185px;border-radius: 8px;
+	position: relative;margin: 30px 20px 30px 30px;
+
+}
+#playlist-title{
+	font-size: 20px;font-weight: 800;position: relative;bottom: 195px;
+}
+#creater-img{
+	width: 26px;height: 26px;border-radius: 26px;
+	position: absolute;left: 235px;top: 70px;
+}
+#creater{
+	font-size: 12px;position: absolute;color: #1B6D85;left: 265px;top: 75px;
+}
+#_head>button{position: absolute;border-radius: 25px;top: 107px;height: 30px;outline: none;padding: 0 10px;line-height: 30px;}
+#all{left: 225px;margin: 0 10px;background-color: rgb(253, 84, 78);color: white;}
+#collect{left: 365px;margin-left: 0px;}
+#share{left: 477px;margin-left: 30px;}
+#download{left: 577px;margin-left: 30px;}
+#tag{
+	position: absolute;font-size: 13px;top: 150px;left: 240px;width: 200px;height: 20px;display: inline-block;
+}
+#count{
+	position: absolute;font-size: 13px;top: 175px;left: 240px;width: 200px;height: 20px;display: inline-block;
+}
+#synopsis{
+	position: relative;font-size: 13px;
+	display: inline-block;width: 300px;
+}
+#synopsisBox{
+	position: relative;font-size: 20px;top: -52px;padding-left: 240px;line-height: 20px;
+}
+#sanjiao{
+	font-size: 15px;position: absolute;left: 800px;top: 5px;
+}
+
+#_body>div>ul{
+	margin-bottom: 10px;height: 20px;line-height: 20px;padding: 0;font-size: 15px;padding: 0 30px;
+}
+
+#_body>div>ul>li{
+	margin-right: 30px;
+}
+
+#music-index{
+	height: 25px;
+}
+#music-index>div{
+	float: left;height: 25px;line-height: 25px;padding-left: 5px;
+}
+
+.music-row>div{
+	float: left;height: 30px;overflow: hidden;text-overflow: ellipsis;
+}
+
+#playlist-music-box{
+	width: 100%;
+}
+
+#playlist-music-box .fa-heart,.fa-heart-o{
+	position: relative;left: 25px;
+}
+#playlist-music-box .fa-heart{
+	color: rgb(253, 84, 78);
+}
+#playlist-music-box .fa-download{
+	position: relative;left: 40px;
+}
+#playlist-music-box>.music-row:hover{
+	background-color: #b0fffd!important;
+}
+#music-index>div:hover{
+	background-color: #b0fffd!important;
+}
+
+#music-index>div,#playlist-music-box>div:hover{
+	cursor: default;
+}
+
