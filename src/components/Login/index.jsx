@@ -4,8 +4,8 @@ import phone from '../../assets/01.png'
 import email from '../../assets/02.png'
 import saoyisao from '../../assets/03.png'
 import qrcode from '../../assets/top.png'
-
-import axios from 'axios'
+import axios from '../../share/share'
+import {nanoid} from 'nanoid'
 
 axios.defaults.withCredentials = true
 
@@ -83,11 +83,29 @@ export default class Login extends Component {
             })
     }
 
+    animation = () =>{
+        this.qrCode.style.transform = "translate(204px,50px)"
+        this.qrCode.style.width = "150px"
+        this.qrCode.style.height = "150px"
+        this.usePhone.style.opacity = 1
+        this.usePhone.style.transform = "translate(-80px)"
+        this.decration.style.transform = "translate(190px,50px)"
+    }
+
+    removeAnimation = () =>{
+        this.qrCode.style.transform = "translate(84px,20px)"
+        this.qrCode.style.width = "210px"
+        this.qrCode.style.height = "210px"
+        this.usePhone.style.opacity = 0
+        this.usePhone.style.transform = "translate(0)"
+        this.decration.style.transform = "translate(98px,20px)"
+    }
+
     render() {
         const { method } = this.state
         if (method === "phone") {
             return (
-                <div id="page" className="login-page">
+                <div id="page" className="login-page" key={nanoid()}>
                     <img src={qrcode} id="top-img" className="curson" alt="err" onClick={
                         () => {
                             this.changeType("qrcode")()
@@ -133,11 +151,10 @@ export default class Login extends Component {
                     </div>
                 </div>
             )
-
         }
         if (method === "email") {
             return (
-                <div id="page" className="login-page">
+                <div id="page" className="login-page" key={nanoid()}>
                     <img src={qrcode} id="top-img" className="curson" alt="err" onClick={
                         () => {
                             this.loading()
@@ -185,12 +202,12 @@ export default class Login extends Component {
 
         } else if (method === "qrcode") {
             return (
-                <div id="page2" className="login-page">
+                <div id="page2" className="login-page" key={nanoid()}>
                     <div className="close-login-page curson" onClick={this.changeType("close")}>X</div>
                     <div id="login-title">扫码登录</div>
-                    <img src="" id="use-phone" />
-                    <img src="" id="qrCode" />
-                    <div id="login-decration">使用网易云APP扫码登录</div>
+                    <img src={saoyisao} id="use-phone" ref={c=>this.usePhone=c}/>
+                    <img id="qrCode" onMouseOver={this.animation} ref={c=>this.qrCode=c} onMouseLeave={this.removeAnimation}/>
+                    <div id="login-decration" ref={c=>this.decration=c}>使用网易云APP扫码登录</div>
                     <div id="change-login" className="curson" onClick={this.changeType("phone")}>选择其它登录方式</div>
                 </div>
             )

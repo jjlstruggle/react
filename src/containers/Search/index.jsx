@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import './index.css'
 import { connect } from 'react-redux'
 import qs from 'querystring'
@@ -273,7 +273,7 @@ class Search extends Component {
     render() {
         const { nowPage, pages } = this.state
         return (
-            <Fragment>
+            <>
                 <div id="search-top" onClick={this.changeType}>
                     <div id="search-count">找到{this.state.songCount}{this.state.type}</div>
                     <span className="search-type curson">单曲</span>
@@ -373,7 +373,7 @@ class Search extends Component {
 
                     </div>
                 </div>
-            </Fragment>
+            </>
         )
     }
 }

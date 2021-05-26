@@ -97,14 +97,18 @@ border: 0;outline: none;padding-left: 15px;color: #000;
 }
 #qrCode{
 	width: 210px;height: 210px;transform: translate(84px,20px);
+	transition: all 1s;
 }
+
 #login-decration{
 	text-align: center;font-size: 13px;width: 180px;
-	transform: translate(87px,20px);height: 20px;
+	transform: translate(98px,20px);height: 20px;
+	transition: all 1s;
 }
 #change-login{
 	position: absolute;font-size: 12px;text-align: center;bottom: 60px;width: 100%;
 }
 #use-phone{
-	width: 170px;height: 260px;transform: translate(-100px,20px);display: none;
+	width: 170px;height: 260px;position: absolute;left: 100px;opacity: 0;top: 140px;
+	transition: all 1s;
 }
