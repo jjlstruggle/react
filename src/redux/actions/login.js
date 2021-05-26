@@ -1,1 +1,0 @@
-export const loginPageState = (type,data) => ({type,data})

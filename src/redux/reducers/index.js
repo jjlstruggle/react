@@ -1,9 +1,10 @@
 import {combineReducers} from 'redux'
 
-import login from './login'
-import playlist from './playlsit'
+import playlist from './playlist'
 import player from './player'
+import musicList from './musicList'
+import music from './music'
 
 export default combineReducers({
-	login,playlist,player
+	playlist,player,musicList,music
 })

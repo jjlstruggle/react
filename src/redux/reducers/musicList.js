@@ -1,14 +1,14 @@
 const init = {
-    musicList: false
+    musicImf:[]
 }
 
 export default function (pre = init, act) {
     const { type, data } = act
     switch (type) {
-        case "musicListPage":
-                return {
-                    musicList:data
-                }
+        case "musicList":
+            return {
+                musicImf:data
+            }
         default:
             return pre
     }

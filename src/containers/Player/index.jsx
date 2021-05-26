@@ -3,7 +3,7 @@ import "./index.css"
 import MyLink from '../../components/MyLink'
 import { connect } from 'react-redux'
 import { playerState } from '../../redux/actions/player.js'
-
+import {musicList} from '../../redux/actions/player';
 
 class Player extends Component {
 
@@ -174,7 +174,11 @@ class Player extends Component {
                         <span></span>
                     </span>
                 </div>
-                <div id="music-list" className="curson">
+                <div id="music-list" className="curson" onClick={
+                    ()=>{
+                        this.props.musicList("musicListPage",!this.props.page.musicList)
+                    }
+                }>
                     <i className="fa fa-indent"></i>
                 </div>
             </div>
@@ -186,6 +190,7 @@ export default connect(
     state =>
     ({
         music: state.playlist,
+        page: state.music
     }),
-    { playerState }
+    { playerState,musicList }
 )(Player)

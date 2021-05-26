@@ -8,17 +8,13 @@ const init = {
     timer:"",
     author:[],
     album:"",
-    coverImg:""
+    coverImg:"",
+    index:0,
 }
 
 export default function (pre=init,act){
     const {type,data} = act
     switch (type) {
-        case "playlist":
-            return {
-                playlistId:data.playlistId,
-                musicIdArr:data.musicIdArr,
-            }
         case "music":
             return {
                 musicId:data.id,
@@ -27,8 +23,10 @@ export default function (pre=init,act){
                 album:data.album,
                 author:data.author,
                 timer:data.timer,
-                coverImg:data.coverImg
+                coverImg:data.coverImg,
+                index:data.index
             }
+            
         default:
             return pre
     }

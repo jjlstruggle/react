@@ -1,27 +1,12 @@
 import React, { Component } from 'react'
 import './index.css'
-import { connect } from 'react-redux'
-import { loginPageState } from '../../redux/actions/login'
 import { withRouter } from 'react-router-dom'
 
 class Header extends Component {
 
-    state = {
-        uid:"",
-        uName:"",
-        uVip:0,
-        uImg:""
-    }
-
     loginPageState = () => {
-        if (this.props.login === "close" && this.props.state === "logout") {
-            this.props.loginPageState("open", {
-                m: this.props.method,
-            })
-        } else if(this.props.login === "open"){
-            this.props.loginPageState("close", {
-                m: this.props.method,
-            })
+        if(!this.props.login.loginPage && !this.props.login.loginState){
+            this.props.loginPageState(true)
         }
     }
 
@@ -32,22 +17,8 @@ class Header extends Component {
         }
     }
 
-    componentDidUpdate = () =>{
-        if(this.props.imf != undefined){
-            const {imf} = this.props
-            if(imf.uid != this.state.uid){
-                this.setState({
-                    uid:imf.uid,
-                    uName:imf.uName,
-                    uVip:imf.uVip,
-                    uImg:imf.uImg
-                })
-            }
-        }
-        
-    }
-
     render() {
+        const {userData} = this.props.login
         return (
             <div id="header-box">
                 <div className="row">
@@ -74,17 +45,17 @@ class Header extends Component {
                     </div>
                     <div id="top-right" onClick={this.loginPageState}>
                         <div id="userImg" className="curson">
-                        {
-                            this.state.uImg === "" ?  <i className="fa fa-user-circle" aria-hidden="true"></i> : <img src={this.state.uImg}/>
-                        }
+                            {
+                                 userData.avatar === "" ? <i className="fa fa-user-circle" aria-hidden="true"></i> : <img src={userData.avatar} />
+                            }
                         </div>
                         <div id="userId" className="curson">
-                            <div id="idText" className="curson">{this.state.uName === "" ? "未登录" : this.state.uName}</div>
+                            { <div id="idText" className="curson">{userData.name === "" ? "未登录" : userData.name}</div> }
                             <div id="userData" className="curson">
                                 <i className="fa fa-sort-desc"></i>
                             </div>
                         </div>
-                        <div id="isVip" className="curson">{this.state.uVip == 0 ? "开通VIP" : "vip"+this.state.uVip}</div>
+                        { <div id="isVip" className="curson">{userData.vip === 0 ? "开通VIP" : "vip" + userData.vip}</div> }
                         <div id="view" className="curson">
                             <i className="fa fa-eye"></i>
                         </div>
@@ -101,14 +72,5 @@ class Header extends Component {
     }
 }
 
-export default connect(
-    state =>
-    ({
-        login: state.login.page,
-        state: state.login.state,
-        method: state.login.method,
-        imf: state.login.imf
 
-    }),
-    { loginPageState }
-)(withRouter(Header))
+export default withRouter(Header)

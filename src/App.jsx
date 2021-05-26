@@ -7,8 +7,6 @@ import Player from './containers/Player'
 
 export default class App extends Component {
 
-  
-
   render() {
     return (
       <div>

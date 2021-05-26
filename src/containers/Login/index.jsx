@@ -4,20 +4,31 @@ import phone from '../../assets/01.png'
 import email from '../../assets/02.png'
 import saoyisao from '../../assets/03.png'
 import qrcode from '../../assets/top.png'
-import { connect } from 'react-redux'
-import { loginPageState } from '../../redux/actions/login'
-import axios from '../../share/share'
 
-class Login extends Component {
+import axios from 'axios'
 
-    changeType = (type, method) => {
+axios.defaults.withCredentials = true
+
+export default class Login extends Component {
+
+    state = {
+        method:"phone"
+    }
+
+    changeType = (type) => {
         return () => {
-            this.props.loginPageState(type, method)
+            //  code
+            if(type == "close"){
+                this.props.loginPageState(false)
+            }else{
+                if(this.state.method != type){
+                    this.setState({method:type})
+                }
+            }
         }
     }
 
     login = () => {
-        const { method } = this.props
         let account = this.account.value
         let password = this.password.value
         if (!this.input.checked) {
@@ -26,17 +37,17 @@ class Login extends Component {
         }
 
         if (password && account) {
-            if (method === "phone") {
+            if (this.state.method === "phone") {
                 // 手机登录
                 axios.post(`/login/cellphone?phone=${account}&password=${password}&time=` + Math.random())
                     .then(response => {
-                        this.loginData(response.data)
+                        this.props.loginData(response.data)
                     })
             } else {
                 // 邮箱登录
                 axios.post(`/login?email=${account}&password=${password}&time=` + Math.random())
                     .then(response => {
-                        this.loginData(response.data)
+                        this.props.loginData(response.data)
                     })
             }
         } else {
@@ -46,13 +57,12 @@ class Login extends Component {
     }
 
     loading = () => {
-        let timer
         axios.post(`/login/qr/key?time=` + Math.random())
             .then(response => {
                 axios.post(`/login/qr/create?key=${response.data.data.unikey}&qrimg=img&time` + Math.random())
                     .then(response2 => {
                         document.querySelector("#qrCode").src = response2.data.data.qrimg
-                        timer = setInterval(() => {
+                        var timer = setInterval(() => {
                             axios.get(`/login/qr/check?key=${response.data.data.unikey}&time=` + Math.random())
                                 .then(response3 => {
                                     if (response3.data.code == 800) {
@@ -64,7 +74,7 @@ class Login extends Component {
                                         alert(response3.data.message)
                                         axios.get(`/login/status?timerstamp=${Date.now()}`)
                                             .then(response4 => {
-                                                this.loginData(response4.data.data)
+                                                this.props.loginData(response4.data.data)
                                             })
                                     }
                                 })
@@ -73,59 +83,19 @@ class Login extends Component {
             })
     }
 
-    loginData = data => {
-        if (data.code == 400) {
-            console.log("请输入有效的手机号")
-            return
-        } else if (data.code == 502) {
-            console.log(data.msg)
-            return
-        } else if (data.code == 200) {
-            // 登录成功
-            this.changeType("login", {
-                m: this.props.method,
-                id: data.account.id,
-                img: data.profile.avatarUrl,
-                name: data.profile.nickname,
-                vipType: data.profile.vipType
-            })()
-        } else if (data.code == undefined) {
-            // pass
-        } else {
-            alert("请求超时,请稍后再登录")
-        }
-    }
-
-    componentDidMount = () => {
-        if (localStorage.cookie !== undefined || localStorage.cookie !== null) {
-            axios({
-                method: 'post',
-                url: `/login/status`,
-            })
-                .then(res => {
-                    this.loginData(res.data.data)
-                })
-        }
-    }
-
     render() {
-        const { method } = this.props
+        const { method } = this.state
         if (method === "phone") {
             return (
                 <div id="page" className="login-page">
                     <img src={qrcode} id="top-img" className="curson" alt="err" onClick={
                         () => {
+                            this.changeType("qrcode")()
                             this.loading()
-                            this.changeType("open", {
-                                m: "qrcode",
-                            })()
                         }
                     } /><br />
                     <img src={phone} id="type-img" alt="err" />
-                    <div className="close-login-page curson" onClick={this.changeType("close", {
-                        m: "phone",
-                        s: "logout"
-                    })}>X</div>
+                    <div className="close-login-page curson" onClick={this.changeType("close")}>X</div>
                     <div id="login-box">
                         <div id="account-box">
                             <div id="mobile">
@@ -153,9 +123,7 @@ class Login extends Component {
                         <div style={{ color: "rgb(253, 84, 78)", marginRight: "43px" }} className="curson">
                             <i className="fa fa-weibo"></i>
                         </div>
-                        <div style={{ color: "rgb(253, 84, 78)" }} className="curson" onClick={this.changeType("open", {
-                            m: "email",
-                        })}>
+                        <div style={{ color: "rgb(253, 84, 78)" }} className="curson" onClick={this.changeType("email")}>
                             <i className="fa fa-envelope-o"></i>
                         </div>
                     </div>
@@ -173,15 +141,11 @@ class Login extends Component {
                     <img src={qrcode} id="top-img" className="curson" alt="err" onClick={
                         () => {
                             this.loading()
-                            this.changeType("open", {
-                                m: "qrcode",
-                            })()
+                            this.changeType("qrcode")()
                         }
                     } /><br />
                     <img src={email} id="type-img" alt="err" />
-                    <div className="close-login-page curson" onClick={this.changeType("close", {
-                        m: "email",
-                    })}>X</div>
+                    <div className="close-login-page curson" onClick={this.changeType("close")}>X</div>
                     <div id="login-box">
                         <div id="account-box">
                             <div id="mobile">
@@ -208,9 +172,7 @@ class Login extends Component {
                         <div style={{ color: "rgb(253, 84, 78)", marginRight: "43px" }} className="curson">
                             <i className="fa fa-weibo"></i>
                         </div>
-                        <div style={{ color: "rgb(253, 84, 78)" }} className="curson" onClick={this.changeType("open", {
-                            m: "phone",
-                        })}>
+                        <div style={{ color: "rgb(253, 84, 78)" }} className="curson" onClick={this.changeType("phone")}>
                             <i className="fa fa-mobile"></i>
                         </div>
                     </div>
@@ -224,30 +186,14 @@ class Login extends Component {
         } else if (method === "qrcode") {
             return (
                 <div id="page2" className="login-page">
-                    <div className="close-login-page curson" onClick={this.changeType("close", {
-                        m: "qrcode",
-                    })}>X</div>
+                    <div className="close-login-page curson" onClick={this.changeType("close")}>X</div>
                     <div id="login-title">扫码登录</div>
                     <img src="" id="use-phone" />
                     <img src="" id="qrCode" />
                     <div id="login-decration">使用网易云APP扫码登录</div>
-                    <div id="change-login" className="curson" onClick={this.changeType("open", {
-                        m: "phone",
-                    })}>选择其它登录方式</div>
+                    <div id="change-login" className="curson" onClick={this.changeType("phone")}>选择其它登录方式</div>
                 </div>
             )
         }
-
     }
 }
-
-
-export default connect(
-    state =>
-    ({
-        login: state.login.page,
-        method: state.login.method,
-        state: state.login.state
-    }),
-    { loginPageState }
-)(Login)

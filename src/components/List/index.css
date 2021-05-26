@@ -1,0 +1,15 @@
+.music-row>div{
+	float: left;height: 30px;overflow: hidden;text-overflow: ellipsis;
+}
+.music-row .fa-heart,.fa-heart-o{
+	position: relative;left: 25px;
+}
+.music-row .fa-heart{
+	color: rgb(253, 84, 78);
+}
+.music-row .fa-download{
+	position: relative;left: 40px;
+}
+.music-row:hover{
+	background-color: #b0fffd;
+}

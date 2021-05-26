@@ -5,34 +5,28 @@ import MusicList from '../../components/MusicList'
 import Login from '../Login'
 import MyLink from '../../components/MyLink'
 import Discover from '../../pages/Index/Discover'
-import { connect } from 'react-redux'
 import Playlist from '../Playlist'
 import Search from '../Search'
 import axios from '../../share/share'
 import { nanoid } from 'nanoid'
-
+import {connect} from 'react-redux'
+import {playlistImfor} from '../../redux/actions/playlist'
 
 class Body extends Component {
 
     state = {
-        isLogin: false,
-        myPlaylist: {
-            id: "",
-            subscribed: "",
-            name: "",
-        },
+        myPlaylist: [],
         collect: true,
-        create: true
+        create: true,
     }
 
     loginPage = login => {
-        if (login === "open") {
-            return <Login />
+        if (!this.props.login.loginState && login) {
+            return <Login loginPage={this.props.login.loginPage} loginPageState={this.props.loginPageState} getUserData={this.props.getUserData} loginData={this.loginData}/>
         } else {
             return false
         }
     }
-
 
     // $.get(url+"/recommend/resource",data=>{
     //     setTimeout(()=>{
@@ -49,29 +43,50 @@ class Body extends Component {
     //     },2000)
     // })
 
-    componentDidUpdate = () => {
-        if (this.state.isLogin === false) {
-            if (this.props.imf !== undefined && this.props.imf.uid !== "") {
-                const { uid, uName } = this.props.imf
-                axios.get(`/user/playlist?uid=${uid}`)
-                    .then(response => {
-                        let myPlaylist = response.data.playlist.map(item => {
-                            let name
-                            if (item.name === uName + "喜欢的音乐") name = "我喜欢的音乐"
-                            else name = item.name
-                            return {
-                                id: item.id,
-                                subscribed: item.subscribed,
-                                name,
-                            }
-                        })
-                        this.setState({
-                            isLogin: true,
-                            myPlaylist
-                        })
-                    })
-            }
+    componentDidMount = () =>{
+        this.props.onRef(this)
+    }
+
+    loginData = data => {
+        if (data.code == 400) {
+            console.log("请输入有效的手机号")
+            return
+        } else if (data.code == 502) {
+            console.log(data.msg)
+            return
+        } else if (data.code == 200) {
+            // 登录成功
+            const {userId,nickname,avatarUrl,vipType} = data.profile
+            this.props.getUserData({
+                uid:userId,
+                name:nickname,
+                avatar:avatarUrl,
+                vip:vipType
+            })
+        } else if (data.code == undefined) {
+            // pass
+        } else {
+            alert("请求超时,请稍后再登录")
         }
+    }
+
+    getLoginData = (uid,name) => {
+        axios.get(`/user/playlist?uid=${uid}`)
+            .then(response => {
+                let myPlaylist = response.data.playlist.map(item => {
+                    let myName
+                    if (item.name === name + "喜欢的音乐") myName = "我喜欢的音乐"
+                    else myName = item.name
+                    return {
+                        id: item.id,
+                        subscribed: item.subscribed,
+                        name:myName
+                    }
+                })
+                this.setState({
+                    myPlaylist
+                })
+            })
     }
 
     fold = type => {
@@ -118,7 +133,7 @@ class Body extends Component {
                     </div>
                     <div className="myList" id="myCreate">
                         {
-                            this.state.myPlaylist.name !== "" ?
+                            this.state.myPlaylist.length !== 0 ?
                                 this.state.myPlaylist.map(item => {
                                     if (!item.subscribed)
                                         return (
@@ -138,7 +153,7 @@ class Body extends Component {
                     </span>
                     <div className="myList" id="myCollect">
                         {
-                            this.state.myPlaylist.name !== "" ?
+                            this.state.myPlaylist.length !== 0 ?
                                 this.state.myPlaylist.map(item => {
                                     if (item.subscribed)
                                         return (
@@ -154,14 +169,17 @@ class Body extends Component {
                     </div>
                 </div>
                 {
-                    this.loginPage(this.props.login)
+                    this.loginPage(this.props.login.loginPage)
                 }
                 <Switch>
                     <Route path="/index/discover" component={Discover} />
                     <Route path="/index/playlist" component={Playlist} />
                     <Route path="/index/search" component={Search} />
                 </Switch>
-                <MusicList />
+                {
+                    this.props.page.musicList ? (<MusicList musicList={this.props.music.musicImf} playlistImfor={this.props.playlistImfor} music={this.props.node}/>) : ("")
+                }
+                
             </div>
         )
     }
@@ -170,7 +188,9 @@ class Body extends Component {
 export default connect(
     state =>
     ({
-        login: state.login.page,
-        imf: state.login.imf
-    })
+        music:state.musicList,
+        node:state.player,
+        page:state.music
+    }),
+    { playlistImfor }
 )(Body)

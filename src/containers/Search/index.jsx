@@ -3,9 +3,9 @@ import './index.css'
 import { connect } from 'react-redux'
 import qs from 'querystring'
 import axios from '../../share/share'
-import { nanoid } from 'nanoid'
 import { playlistImfor } from '../../redux/actions/playlist.js'
-
+import List from '../../components/List';
+import { nanoid } from 'nanoid'
 
 class Search extends Component {
 
@@ -296,24 +296,7 @@ class Search extends Component {
                         {
                             this.state.musicImforArr.map((item,index) => {
                                 return (
-                                    <div className="music-row" key={nanoid()} onDoubleClick={this.send(index)}>
-                                        <div className='col1'>
-                                            <i className='fa fa-heart-o'></i>
-                                            <i className='fa fa-download'></i>
-                                        </div>
-                                        <div className='col2'>
-                                            {item.name}
-                                        </div>
-                                        <div className='col3'>
-                                            {item.author}
-                                        </div>
-                                        <div className='col4'>
-                                            {item.album}
-                                        </div>
-                                        <div className='col5'>
-                                            {item.timer}
-                                        </div>
-                                    </div>
+                                    <List item={item} index={index} send={this.send} key={nanoid()}></List>
                                 )
                             })
                         }

@@ -56,28 +56,13 @@
 	float: left;height: 25px;line-height: 25px;padding-left: 5px;
 }
 
-.music-row>div{
-	float: left;height: 30px;overflow: hidden;text-overflow: ellipsis;
-}
-
 #playlist-music-box{
 	width: 100%;
 }
 
-#playlist-music-box .fa-heart,.fa-heart-o{
-	position: relative;left: 25px;
-}
-#playlist-music-box .fa-heart{
-	color: rgb(253, 84, 78);
-}
-#playlist-music-box .fa-download{
-	position: relative;left: 40px;
-}
-#playlist-music-box>.music-row:hover{
-	background-color: #b0fffd!important;
-}
+
 #music-index>div:hover{
-	background-color: #b0fffd!important;
+	background-color: #b0fffd;
 }
 
 #music-index>div,#playlist-music-box>div:hover{

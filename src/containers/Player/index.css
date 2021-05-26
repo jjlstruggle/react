@@ -162,29 +162,3 @@
 #desklyrics:hover{
 	color: rgb(253, 84, 78);
 }
-
-#right-music-list{
-	position: absolute;right: 0;top: 0;width: 420px;height: 595px;background-color: #ffffff;
-z-index: 999;top: 60px;font-size: 12px;border: 0.1px solid #e6d9d9;display: none;
-}
-#list-change>div{
-	width: 210px;height: 30px;margin: 0 auto;
-}
-#list-change>div>button{
-	width: 103px;height: 30px;border: 0;border-radius: 15px;background-color: rgb(209, 207, 207);margin-top: 20px;color: white;margin-left: -3px;
-}
-#list-content{
-	padding-left: 10px;
-}
-#list-content>div>div{
-	float: left;
-}
-#list-top{
-	margin-top: 40px;height: 20px;line-height: 20px;margin-bottom: 15px;
-}
-#list-body{
-	overflow: auto;height: 492px;
-}
-#list-body>div>div{
-	float: left;
-}
